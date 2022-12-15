@@ -13,21 +13,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Test for Siscore dataset."""
-
-from tensorflow_datasets.image_classification.siscore import siscore
-import tensorflow_datasets.public_api as tfds
+from tensorflow_datasets.datasets.stanford_dogs import stanford_dogs_dataset_builder
+import tensorflow_datasets.testing as tfds_test
 
 
-class SiscoreTest(tfds.testing.DatasetBuilderTestCase):
-  """Tests for siscore dataset."""
-  BUILDER_CONFIG_NAMES_TO_TEST = ['rotation', 'size', 'location']
+class StanfordDogsTest(tfds_test.DatasetBuilderTestCase):
 
-  DATASET_CLASS = siscore.Siscore
-  SPLITS = {
-      'test': 2,
+  DATASET_CLASS = stanford_dogs_dataset_builder.Builder
+
+  SPLITS = {  # No. of train and test samples
+      'train': 8,
+      'test': 3,
   }
+
+  DL_DOWNLOAD_RESULT = 'Images.tar'
+  DL_EXTRACT_RESULT = ['list.tar', 'Annotation.tar']
 
 
 if __name__ == '__main__':
-  tfds.testing.test_main()
+  tfds_test.test_main()

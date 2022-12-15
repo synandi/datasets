@@ -13,17 +13,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""smartwatch_gestures dataset."""
+"""Test for Siscore dataset."""
 
+from tensorflow_datasets.datasets.siscore import siscore_dataset_builder
 import tensorflow_datasets.public_api as tfds
-from tensorflow_datasets.time_series.smartwatch_gestures import smartwatch_gestures
 
 
-class SmartwatchGesturesTest(tfds.testing.DatasetBuilderTestCase):
-  """Tests for smartwatch_gestures dataset."""
-  DATASET_CLASS = smartwatch_gestures.SmartwatchGestures
+class SiscoreTest(tfds.testing.DatasetBuilderTestCase):
+  """Tests for siscore dataset."""
+  BUILDER_CONFIG_NAMES_TO_TEST = ['rotation', 'size', 'location']
+
+  DATASET_CLASS = siscore_dataset_builder.Builder
   SPLITS = {
-      'train': 3,
+      'test': 2,
   }
 
 
