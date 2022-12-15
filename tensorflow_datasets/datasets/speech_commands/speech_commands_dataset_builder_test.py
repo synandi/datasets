@@ -13,20 +13,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Tests for snli dataset module."""
+"""TODO(speech_commands): Add a description here."""
 
 from tensorflow_datasets import testing
-from tensorflow_datasets.text import snli
+from tensorflow_datasets.datasets.speech_commands import speech_commands_dataset_builder
 
 
-class SnliTest(testing.DatasetBuilderTestCase):
-  DATASET_CLASS = snli.Snli
-
+class SpeechCommandsTest(testing.DatasetBuilderTestCase):
+  # TODO(speech_commands):
+  DATASET_CLASS = speech_commands_dataset_builder.Builder
   SPLITS = {
-      "train": 3,
-      "validation": 2,
-      "test": 1,
+      "train": 4,  # Number of fake train example
+      "validation": 3,  # Number of fake validation example
+      "test": 1,  # Number of fake test example
   }
+
+  DL_EXTRACT_RESULT = ["train.tar.gz", "test.tar.gz"]
 
 
 if __name__ == "__main__":

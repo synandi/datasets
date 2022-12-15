@@ -13,22 +13,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from tensorflow_datasets.image_classification import stanford_dogs
-import tensorflow_datasets.testing as tfds_test
+"""spoken digit dataset."""
+
+from tensorflow_datasets import testing
+from tensorflow_datasets.datasets.spoken_digit import spoken_digit_dataset_builder
 
 
-class StanfordDogsTest(tfds_test.DatasetBuilderTestCase):
-
-  DATASET_CLASS = stanford_dogs.StanfordDogs
-
-  SPLITS = {  # No. of train and test samples
-      'train': 8,
-      'test': 3,
+class SpokenDigitTest(testing.DatasetBuilderTestCase):
+  DATASET_CLASS = spoken_digit_dataset_builder.Builder
+  SPLITS = {
+      "train": 1,  # Number of fake train examples
   }
 
-  DL_DOWNLOAD_RESULT = 'Images.tar'
-  DL_EXTRACT_RESULT = ['list.tar', 'Annotation.tar']
 
-
-if __name__ == '__main__':
-  tfds_test.test_main()
+if __name__ == "__main__":
+  testing.test_main()

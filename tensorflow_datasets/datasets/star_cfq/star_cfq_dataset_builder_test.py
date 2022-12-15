@@ -13,21 +13,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""TODO(so2sat): Add a description here."""
+"""Tests for CFQ dataset module."""
 
 from tensorflow_datasets import testing
-from tensorflow_datasets.image_classification import so2sat
+from tensorflow_datasets.datasets.star_cfq import star_cfq_dataset_builder
 
 
-class So2satTest(testing.DatasetBuilderTestCase):
-  DATASET_CLASS = so2sat.So2sat
+class StarCFQRandomSplitTest(testing.DatasetBuilderTestCase):
+  DATASET_CLASS = star_cfq_dataset_builder.Builder
+  BUILDER_CONFIG_NAMES_TO_TEST = [
+      "single_pool_10x_b_cfq", "equal_weighting_1x_b_cfq_1x_x_cfq"
+  ]
   SPLITS = {
-      "train": 5,  # Number of fake train example
-      "validation": 3,  # Number of fake validation example
+      "train": 2,
+      "test": 1,
   }
-  DL_EXTRACT_RESULT = {
-      "train": "./training.h5",
-      "val": "./validation.h5",
+
+
+class StarCFQCompoundDivergenceSplitTest(testing.DatasetBuilderTestCase):
+  DATASET_CLASS = star_cfq_dataset_builder.Builder
+  BUILDER_CONFIG_NAMES_TO_TEST = ["u_cfq_compound_divergence_0.333333_0.3_r4"]
+  SPLITS = {
+      "train": 2,
+      "validation": 1,
+      "test": 1,
   }
 
 
