@@ -13,19 +13,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Tests for snli dataset module."""
+"""spoken digit dataset."""
 
 from tensorflow_datasets import testing
-from tensorflow_datasets.text import snli
+from tensorflow_datasets.datasets.spoken_digit import spoken_digit_dataset_builder
 
 
-class SnliTest(testing.DatasetBuilderTestCase):
-  DATASET_CLASS = snli.Snli
-
+class SpokenDigitTest(testing.DatasetBuilderTestCase):
+  DATASET_CLASS = spoken_digit_dataset_builder.Builder
   SPLITS = {
-      "train": 3,
-      "validation": 2,
-      "test": 1,
+      "train": 1,  # Number of fake train examples
   }
 
 

@@ -13,21 +13,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Test for Siscore dataset."""
+"""Tests for snli dataset module."""
 
-from tensorflow_datasets.image_classification.siscore import siscore
-import tensorflow_datasets.public_api as tfds
+from tensorflow_datasets import testing
+from tensorflow_datasets.datasets.snli import snli_dataset_builder
 
 
-class SiscoreTest(tfds.testing.DatasetBuilderTestCase):
-  """Tests for siscore dataset."""
-  BUILDER_CONFIG_NAMES_TO_TEST = ['rotation', 'size', 'location']
+class SnliTest(testing.DatasetBuilderTestCase):
+  DATASET_CLASS = snli_dataset_builder.Builder
 
-  DATASET_CLASS = siscore.Siscore
   SPLITS = {
-      'test': 2,
+      "train": 3,
+      "validation": 2,
+      "test": 1,
   }
 
 
-if __name__ == '__main__':
-  tfds.testing.test_main()
+if __name__ == "__main__":
+  testing.test_main()
