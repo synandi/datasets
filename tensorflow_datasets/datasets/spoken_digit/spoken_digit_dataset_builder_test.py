@@ -13,21 +13,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""TODO(so2sat): Add a description here."""
+"""spoken digit dataset."""
 
 from tensorflow_datasets import testing
-from tensorflow_datasets.image_classification import so2sat
+from tensorflow_datasets.datasets.spoken_digit import spoken_digit_dataset_builder
 
 
-class So2satTest(testing.DatasetBuilderTestCase):
-  DATASET_CLASS = so2sat.So2sat
+class SpokenDigitTest(testing.DatasetBuilderTestCase):
+  DATASET_CLASS = spoken_digit_dataset_builder.Builder
   SPLITS = {
-      "train": 5,  # Number of fake train example
-      "validation": 3,  # Number of fake validation example
-  }
-  DL_EXTRACT_RESULT = {
-      "train": "./training.h5",
-      "val": "./validation.h5",
+      "train": 1,  # Number of fake train examples
   }
 
 

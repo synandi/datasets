@@ -13,18 +13,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""spoken digit dataset."""
+"""Test for Siscore dataset."""
 
-from tensorflow_datasets import testing
-from tensorflow_datasets.audio.spoken_digit import spoken_digit
+from tensorflow_datasets.datasets.siscore import siscore_dataset_builder
+import tensorflow_datasets.public_api as tfds
 
 
-class SpokenDigitTest(testing.DatasetBuilderTestCase):
-  DATASET_CLASS = spoken_digit.SpokenDigit
+class SiscoreTest(tfds.testing.DatasetBuilderTestCase):
+  """Tests for siscore dataset."""
+  BUILDER_CONFIG_NAMES_TO_TEST = ['rotation', 'size', 'location']
+
+  DATASET_CLASS = siscore_dataset_builder.Builder
   SPLITS = {
-      "train": 1,  # Number of fake train examples
+      'test': 2,
   }
 
 
-if __name__ == "__main__":
-  testing.test_main()
+if __name__ == '__main__':
+  tfds.testing.test_main()

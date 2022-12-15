@@ -13,14 +13,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from tensorflow_datasets.image_classification import stanford_online_products
-import tensorflow_datasets.testing as tfds_test
+"""smartwatch_gestures dataset."""
+
+from tensorflow_datasets.datasets.smartwatch_gestures import smartwatch_gestures_dataset_builder
+import tensorflow_datasets.public_api as tfds
 
 
-class StanfordOnlineProductsTest(tfds_test.DatasetBuilderTestCase):
-  DATASET_CLASS = stanford_online_products.StanfordOnlineProducts
-  SPLITS = {"train": 3, "test": 3}
+class SmartwatchGesturesTest(tfds.testing.DatasetBuilderTestCase):
+  """Tests for smartwatch_gestures dataset."""
+  DATASET_CLASS = smartwatch_gestures_dataset_builder.Builder
+  SPLITS = {
+      'train': 3,
+  }
 
 
-if __name__ == "__main__":
-  tfds_test.test_main()
+if __name__ == '__main__':
+  tfds.testing.test_main()

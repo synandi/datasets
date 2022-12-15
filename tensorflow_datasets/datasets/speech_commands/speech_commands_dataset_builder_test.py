@@ -13,22 +13,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from tensorflow_datasets.image_classification import stanford_dogs
-import tensorflow_datasets.testing as tfds_test
+"""TODO(speech_commands): Add a description here."""
+
+from tensorflow_datasets import testing
+from tensorflow_datasets.datasets.speech_commands import speech_commands_dataset_builder
 
 
-class StanfordDogsTest(tfds_test.DatasetBuilderTestCase):
-
-  DATASET_CLASS = stanford_dogs.StanfordDogs
-
-  SPLITS = {  # No. of train and test samples
-      'train': 8,
-      'test': 3,
+class SpeechCommandsTest(testing.DatasetBuilderTestCase):
+  # TODO(speech_commands):
+  DATASET_CLASS = speech_commands_dataset_builder.Builder
+  SPLITS = {
+      "train": 4,  # Number of fake train example
+      "validation": 3,  # Number of fake validation example
+      "test": 1,  # Number of fake test example
   }
 
-  DL_DOWNLOAD_RESULT = 'Images.tar'
-  DL_EXTRACT_RESULT = ['list.tar', 'Annotation.tar']
+  DL_EXTRACT_RESULT = ["train.tar.gz", "test.tar.gz"]
 
 
-if __name__ == '__main__':
-  tfds_test.test_main()
+if __name__ == "__main__":
+  testing.test_main()
