@@ -13,19 +13,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Tests for snli dataset module."""
+"""TODO(so2sat): Add a description here."""
 
 from tensorflow_datasets import testing
-from tensorflow_datasets.text import snli
+from tensorflow_datasets.datasets.so2sat import so2sat_dataset_builder
 
 
-class SnliTest(testing.DatasetBuilderTestCase):
-  DATASET_CLASS = snli.Snli
-
+class So2satTest(testing.DatasetBuilderTestCase):
+  DATASET_CLASS = so2sat_dataset_builder.Builder
   SPLITS = {
-      "train": 3,
-      "validation": 2,
-      "test": 1,
+      "train": 5,  # Number of fake train example
+      "validation": 3,  # Number of fake validation example
+  }
+  DL_EXTRACT_RESULT = {
+      "train": "./training.h5",
+      "val": "./validation.h5",
   }
 
 

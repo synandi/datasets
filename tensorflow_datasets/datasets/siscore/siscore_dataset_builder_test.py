@@ -13,23 +13,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""TODO(so2sat): Add a description here."""
+"""Test for Siscore dataset."""
 
-from tensorflow_datasets import testing
-from tensorflow_datasets.image_classification import so2sat
+from tensorflow_datasets.datasets.siscore import siscore_dataset_builder
+import tensorflow_datasets.public_api as tfds
 
 
-class So2satTest(testing.DatasetBuilderTestCase):
-  DATASET_CLASS = so2sat.So2sat
+class SiscoreTest(tfds.testing.DatasetBuilderTestCase):
+  """Tests for siscore dataset."""
+  BUILDER_CONFIG_NAMES_TO_TEST = ['rotation', 'size', 'location']
+
+  DATASET_CLASS = siscore_dataset_builder.Builder
   SPLITS = {
-      "train": 5,  # Number of fake train example
-      "validation": 3,  # Number of fake validation example
-  }
-  DL_EXTRACT_RESULT = {
-      "train": "./training.h5",
-      "val": "./validation.h5",
+      'test': 2,
   }
 
 
-if __name__ == "__main__":
-  testing.test_main()
+if __name__ == '__main__':
+  tfds.testing.test_main()
