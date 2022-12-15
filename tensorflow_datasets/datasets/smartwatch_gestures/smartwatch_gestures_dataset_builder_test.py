@@ -13,18 +13,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""spoken digit dataset."""
+"""smartwatch_gestures dataset."""
 
-from tensorflow_datasets import testing
-from tensorflow_datasets.audio.spoken_digit import spoken_digit
+from tensorflow_datasets.datasets.smartwatch_gestures import smartwatch_gestures_dataset_builder
+import tensorflow_datasets.public_api as tfds
 
 
-class SpokenDigitTest(testing.DatasetBuilderTestCase):
-  DATASET_CLASS = spoken_digit.SpokenDigit
+class SmartwatchGesturesTest(tfds.testing.DatasetBuilderTestCase):
+  """Tests for smartwatch_gestures dataset."""
+  DATASET_CLASS = smartwatch_gestures_dataset_builder.Builder
   SPLITS = {
-      "train": 1,  # Number of fake train examples
+      'train': 3,
   }
 
 
-if __name__ == "__main__":
-  testing.test_main()
+if __name__ == '__main__':
+  tfds.testing.test_main()
